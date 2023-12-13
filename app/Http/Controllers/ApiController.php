@@ -58,7 +58,7 @@ class ApiController extends Controller
         $response = Http::get("https://petstore.swagger.io/v2/pet/{$petId}");
         $pet = $response->json();
 
-        // Show the form for editing the pet
+        // Wyświetlenie formularza edycji wpisu zwierzaka
         return view('api.edit', ['pet' => $pet]);
     }
 
@@ -90,10 +90,10 @@ class ApiController extends Controller
 
     public function destroy($petId)
     {
-        // Perform the DELETE request to remove the pet
+        // usunięcie zwierzaka
         $response = Http::delete("https://petstore.swagger.io/v2/pet/{$petId}");
 
-        // Redirect or respond as needed
+        // Przekierowanie do listy zwierzaków po usunięciu wpisu
         return redirect()->route('pets')->with('success', 'Pet deleted successfully!');
     }
 }
